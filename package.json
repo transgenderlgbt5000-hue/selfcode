@@ -2,6 +2,9 @@
   "name": "selfcode",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "generate-icons": "node ./scripts/generate-icons.js",
