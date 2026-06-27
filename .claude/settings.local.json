@@ -8,7 +8,14 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); git --version 2>&1)",
       "PowerShell(& \"C:\\\\Git\\\\cmd\\\\git.exe\" --version)",
       "PowerShell($git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; & $git init; Write-Host \"Git repo initialized\")",
-      "PowerShell($git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; & $git branch -m main; & $git add .; & $git commit -m \"Initial commit: personal portfolio website\")"
+      "PowerShell($git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; & $git branch -m main; & $git add .; & $git commit -m \"Initial commit: personal portfolio website\")",
+      "PowerShell($env:Path = \"C:\\\\Git\\\\cmd;\" + $env:Path; cd d:\\\\selfcode; $git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; git config --global http.proxy http://127.0.0.1:7890 2>&1; git config --global https.proxy http://127.0.0.1:7890 2>&1; Write-Host \"Proxy set\")",
+      "PowerShell($env:Path = \"C:\\\\Git\\\\cmd;\" + $env:Path; $git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; npx gh-pages -d out 2>&1)",
+      "PowerShell($env:Path = \"C:\\\\Git\\\\cmd;\" + $env:Path; $git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode\\\\out; & $git init; & $git checkout -b gh-pages; & $git add .; & $git commit -m \"Deploy\"; & $git remote add origin https://github.com/transgenderlgbt5000-hue/selfcode.git; & $git push -f origin gh-pages 2>&1)",
+      "PowerShell($env:Path = \"C:\\\\Git\\\\cmd;\" + $env:Path; cd d:\\\\selfcode; git config --global --unset http.proxy 2>$null; git config --global --unset https.proxy 2>$null; cd d:\\\\selfcode\\\\out; $git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; & $git remote remove origin 2>$null; & $git remote add origin https://github.com/transgenderlgbt5000-hue/selfcode.git; & $git push -f origin gh-pages 2>&1)",
+      "PowerShell($env:Path = \"C:\\\\Git\\\\cmd;\" + $env:Path; $git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode\\\\out; for \\($i=0; $i -lt 5; $i++\\) { Write-Host \"Attempt $\\($i+1\\)...\"; $result = & $git push -f origin gh-pages 2>&1; if \\($LASTEXITCODE -eq 0\\) { Write-Host \"SUCCESS!\"; break } Write-Host \"Retry in 5s...\"; Start-Sleep 5 })",
+      "PowerShell(npx wrangler --version 2>&1)",
+      "PowerShell($env:HTTPS_PROXY = \"\"; $env:HTTP_PROXY = \"\"; cd d:\\\\selfcode; npx wrangler pages deploy out --project-name=selfcode --commit-dirty=true 2>&1)"
     ]
   }
 }
