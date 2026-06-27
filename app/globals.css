@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #080307;
+  --foreground: #f6eff8;
+  --accent-pink: #ff96cf;
+  --accent-gold: #e1c16b;
+  --accent-black: #09030b;
+  --accent-violet: #8a5cff;
+  --accent-violet-deep: #5a2bd1;
+  --accent-pink-soft: #ffb3dc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at 18% 12%, rgba(138, 92, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 8%, rgba(255, 150, 207, 0.16), transparent 22%),
+    radial-gradient(circle at 50% 92%, rgba(255, 216, 123, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(14, 6, 22, 0.98) 0%, rgba(6, 3, 14, 1) 100%);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  transition: all 220ms ease;
+}
+
+.hero-shell {
+  background: radial-gradient(circle at 50% 16%, rgba(255, 150, 207, 0.20), transparent 22%),
+    radial-gradient(circle at 18% 18%, rgba(138, 92, 255, 0.22), transparent 20%),
+    radial-gradient(circle at 84% 10%, rgba(255, 222, 148, 0.16), transparent 14%),
+    radial-gradient(circle at 50% 90%, rgba(90, 43, 209, 0.18), transparent 22%),
+    linear-gradient(180deg, rgba(14, 6, 22, 0.96), rgba(7, 3, 16, 1));
+  animation: hero-gradient-shift 18s ease-in-out infinite alternate;
+}
+
+.hero-glow-ring {
+  background: radial-gradient(circle at 30% 40%, rgba(138, 92, 255, 0.28), transparent 38%),
+    radial-gradient(circle at 70% 60%, rgba(255, 150, 207, 0.24), transparent 36%),
+    radial-gradient(circle at 50% 80%, rgba(255, 222, 148, 0.18), transparent 30%);
+  filter: blur(48px);
+  animation: ring-pulse 4.2s ease-in-out infinite, hero-orb-drift 14s ease-in-out infinite alternate;
+}
+
+.hero-grid {
+  background-image: linear-gradient(rgba(180, 140, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 180, 220, 0.06) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+}
+
+.hero-scanlines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 6px;
+  opacity: 0.24;
+}
+
+/* ========== Nightclub ambience ========== */
+.hero-haze {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255, 180, 220, 0.10), transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(138, 92, 255, 0.12), transparent 60%);
+  mix-blend-mode: screen;
+}
+
+.title-frame {
+  inset: -1.3rem;
+  border: 1px solid rgba(255, 102, 191, 0.30);
+  border-radius: 2rem;
+  box-shadow: 0 0 82px rgba(255, 109, 190, 0.16);
+  animation: frame-pulse 5.4s ease-in-out infinite alternate;
+}
+
+.hero-title {
+  font-family: 'ZCOOL QingKe HuangYou', 'Noto Sans SC', system-ui, sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  /* removed glow shadow to avoid pink highlight on individual letters */
+}
+
+.hero-title::after {
+  /* removed decorative gradient underline per request */
+  display: none;
+}
+
+/* Gold premium treatment for the hero title */
+.hero-title--gold {
+  background-image: linear-gradient(
+    100deg,
+    #f0c869 0%,
+    #ffe39a 22%,
+    #fff8d6 42%,
+    #f7d27a 58%,
+    #ffe9a8 78%,
+    #f3c865 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 9s ease-in-out infinite;
+  position: relative;
+}
+
+.hero-title--gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 220, 130, 0.18) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes gold-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.button-highlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(255, 239, 179, 0.14), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(255, 129, 183, 0.12), transparent 20%);
+  opacity: 0.85;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.5rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(255, 104, 193, 0.22);
+  border-radius: 999px;
+  background: rgba(24, 8, 18, 0.54);
+  color: rgba(255, 235, 246, 0.84);
+  text-transform: uppercase;
+}
+
+.custom-cursor,
+.custom-ring,
+.custom-glow,
+.custom-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 50;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.custom-trail {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 49;
+  transform: none;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.custom-cursor {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 217, 241, 0.92);
+  background: rgba(255, 255, 255, 0.08);
+  transition: width 120ms ease-out, height 120ms ease-out, background-color 120ms ease-out, border-color 120ms ease-out;
+  mix-blend-mode: screen;
+}
+
+.custom-cursor--active {
+  width: 36px;
+  height: 36px;
+  border-color: rgba(255, 170, 228, 1);
+  background: rgba(255, 166, 221, 0.22);
+}
+
+.custom-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 136, 214, 0.28);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0.7;
+  transition: transform 180ms ease-out, opacity 180ms ease-out;
+}
+
+.custom-ring--active {
+  width: 68px;
+  height: 68px;
+  opacity: 0.95;
+}
+
+/* Glow: soft luminous halo behind the main ring, visible on movement */
+.custom-glow {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 150, 207, 0.22), rgba(138, 92, 255, 0.08) 50%, transparent 72%);
+  opacity: 0.15;
+  transition: opacity 260ms ease-out;
+  z-index: 49;
+  will-change: transform, opacity;
+}
+
+.custom-glow--active {
+  opacity: 0.4;
+  background: radial-gradient(circle, rgba(255, 170, 228, 0.32), rgba(200, 120, 255, 0.12) 50%, transparent 72%);
+}
+
+.custom-glow--idle {
+  opacity: 0.55;
+  animation: glow-idle 2.8s ease-in-out infinite;
+}
+
+@keyframes glow-idle {
+  0%, 100% {
+    background: radial-gradient(circle, rgba(255, 150, 207, 0.22), rgba(138, 92, 255, 0.08) 50%, transparent 72%);
+  }
+  50% {
+    background: radial-gradient(circle, rgba(255, 200, 140, 0.28), rgba(180, 120, 255, 0.14) 50%, transparent 72%);
+  }
+}
+
+/* Idle motion: when the user stops moving, the outer ring
+   gently breathes, rotates, and emits a subtle halo pulse. */
+.custom-ring--idle {
+  animation: ring-idle 2.4s ease-in-out infinite;
+  box-shadow: 0 0 18px rgba(255, 150, 207, 0.35),
+              0 0 32px rgba(138, 92, 255, 0.18);
+}
+
+@keyframes ring-idle {
+  0%, 100% {
+    border-color: rgba(255, 136, 214, 0.28);
+  }
+  50% {
+    border-color: rgba(255, 220, 140, 0.65);
+  }
+}
+
+[data-cursor-target] {
+  cursor: none;
+}
+
+[data-ripple] {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.42);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Accessibility & mobile-friendly adjustments */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.06);
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 128, 196, 0.6);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* hide custom mouse cursor on touch devices */
+  .custom-cursor,
+  .custom-ring,
+  .custom-glow {
+    display: none !important;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@keyframes ring-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-gradient-shift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    background-position: 12% 8%, -10% 4%, 8% -6%, -6% 10%, 0% 0%;
+    filter: hue-rotate(18deg);
+  }
+}
+
+@keyframes hero-orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5%, -1.5%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-2%, 1.8%, 0) scale(1);
+  }
+}
+
+@keyframes frame-pulse {
+  0% {
+    box-shadow: 0 0 52px rgba(255, 102, 189, 0.18);
+  }
+  100% {
+    box-shadow: 0 0 96px rgba(255, 206, 160, 0.24);
+  }
+}
+
+::selection {
+  background: rgba(255, 108, 191, 0.34);
+}
+
+@keyframes loader-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scene-appear {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@keyframes content-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+  animation: none;
+}
+
+@keyframes line-flicker {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+

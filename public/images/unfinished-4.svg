@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06030a"/>
+      <stop offset="100%" stop-color="#512d32"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)" />
+  <rect x="120" y="150" width="340" height="520" rx="48" fill="rgba(255,255,255,0.03)" />
+  <rect x="410" y="240" width="520" height="380" rx="58" fill="rgba(255,139,236,0.16)" />
+  <circle cx="880" cy="200" r="110" fill="rgba(255,211,120,0.18)" />
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="84" fill="#fff" opacity="0.92">素材 4</text>
+  <text x="50%" y="63%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#ffb4db" opacity="0.8">未完成项目素材节选</text>
+</svg>

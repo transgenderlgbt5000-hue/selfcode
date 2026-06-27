@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm run lint 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(npm install simplex-noise 2>&1)",
+      "PowerShell(winget install --id Git.Git -e --source winget 2>&1)",
+      "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); git --version 2>&1)",
+      "PowerShell(& \"C:\\\\Git\\\\cmd\\\\git.exe\" --version)",
+      "PowerShell($git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; & $git init; Write-Host \"Git repo initialized\")",
+      "PowerShell($git = \"C:\\\\Git\\\\cmd\\\\git.exe\"; cd d:\\\\selfcode; & $git branch -m main; & $git add .; & $git commit -m \"Initial commit: personal portfolio website\")"
+    ]
+  }
+}
