@@ -21,6 +21,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "文 | Wayne | 个人介绍与作品集",
   description: "文 | Wayne 的个人介绍与作品集网站，黑粉金高级视觉与动效体验。",
+  manifest: "/manifest.json",
+  icons: {
+    apple: "/images/w-icon-192.png",
+    icon: "/favicon.ico",
+  },
+  appleWebApp: {
+    capable: true,
+  },
 };
 
 export default function RootLayout({
@@ -36,9 +44,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="theme-color" content="#050308" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/images/w-icon-192.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
       <body className="min-h-screen flex flex-col bg-[#05030b] text-white">
         <RippleProvider>
